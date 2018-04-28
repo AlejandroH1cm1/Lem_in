@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 13:02:05 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/28 01:32:29 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/28 01:53:55 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			read_in(t_room **rooms, t_link **links, t_comm **comms)
 	cm = NULL;
 	while (get_next_line(0, &line))
 	{
-		if(!(f = format(line)))
+		if (!(f = format(line)))
 			ft_strdel(&line);
 		if (f == 0)
 			return (-1);
