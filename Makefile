@@ -1,5 +1,5 @@
 FILES_C = src/main.c src/error.c src/link.c src/room.c src/utils.c src/utils2.c src/read.c src/solve.c src/pathing.c src/print.c src/fixpath.c src/utils3.c src/commentaries.c
-FILES_O = main.o error.o link.o room.o utils.o read.o solve.o pathing.o utils2.o print.o fixpath.o utils3.o commentaries.o kane_alloc_wrap.o
+FILES_O = main.o error.o link.o room.o utils.o read.o solve.o pathing.o utils2.o print.o fixpath.o utils3.o commentaries.o
 NAME = lem-in
 FLAGS = -Wall -Wextra -Werror
 
@@ -15,11 +15,11 @@ $(NAME):
 	@echo "\033[0;32mFinished building \033[40;97m$(NAME)\033[0m"
 
 clean:
-	@/bin/rm -f $(FILES_O) $(FILES_O)
+	@/bin/rm -f $(FILES_O) kane_alloc_wrap.o
 	@make -C libft/ clean
 
 fclean:
-	@/bin/rm -f $(FILES_O) $(FILES_O)
+	@/bin/rm -f $(FILES_O) kane_alloc_wrap.o
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(NAME)2
 	@/bin/rm -f libft.a
