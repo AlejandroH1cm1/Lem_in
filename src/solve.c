@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 23:02:51 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/28 01:28:58 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 09:02:28 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,21 @@ static void	send_ants(int ants, t_room *rooms, t_link *links, int recv)
 	t_room	*tmp;
 
 	sent = 0;
+	current = 0;
 	while (recv < ants)
 	{
-		current = recv;
-		while (current < sent)
+		if (sent > 0)
+			current = find_nx_ant(rooms, 0) - 1;
+		while (current < sent && recv < ants)
 		{
-			if (!(tmp = find_ant(rooms, current + 1)))
-				tmp = find_ant(rooms, find_nx_ant(rooms, 0));
+			tmp = nx_ant(rooms, &current);
 			tmp->val = 0;
 			tmp = find_room(rooms, tmp->nr);
 			if (tmp->val != -2)
-				tmp->val = current + 1;
+				tmp->val = current;
 			else
 				recv++;
-			print_move(current + 1, tmp);
-			current++;
+			print_move(current, tmp);
 		}
 		if (sent < ants)
 			send_try(ants, rooms, links, &sent);

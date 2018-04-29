@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 00:33:45 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/28 00:56:12 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 08:49:56 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,13 @@ int		find_nx_ant(t_room *rooms, int ant)
 		rooms = rooms->next;
 	}
 	return (aux);
+}
+
+t_room	*nx_ant(t_room *rooms, int *current)
+{
+	t_room	*tmp;
+
+	tmp = find_ant(rooms, find_nx_ant(rooms, *current));
+	*current = tmp->val;
+	return (tmp);
 }

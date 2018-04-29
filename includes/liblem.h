@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 16:45:26 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/28 01:39:19 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 08:50:18 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ int					find_small(t_room *rooms, t_link *links);
 int					choose_r(int v1, int v2, int v, int a);
 void				print_move(int ant, t_room *room);
 int					find_nx_ant(t_room *rooms, int ant);
+t_room				*nx_ant(t_room *rmps, int *current);
 
 #endif
