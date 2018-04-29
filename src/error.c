@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:06:04 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/26 00:20:32 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 10:19:41 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	error(int er_no)
 		ft_putendl("Missing/double start and/or end");
 	if (er_no == -6)
 		ft_putendl("No path from beggining to end");
+	if (er_no == -7)
+		ft_putendl("Invalid rooms");
 	ft_putendl("***");
 	return ;
 }

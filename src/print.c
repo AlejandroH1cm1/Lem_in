@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 15:00:40 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/28 01:39:17 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 09:44:16 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	print_link(t_link *link)
 {
-	ft_putstr(link->ra);
+	ft_putstr(link->ra->name);
 	ft_putchar('-');
-	ft_putendl(link->rb);
+	ft_putendl(link->rb->name);
 }
 
 static void	print_room(t_room *room, t_comm *comms)

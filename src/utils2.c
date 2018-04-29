@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 22:54:29 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/28 00:27:34 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 10:10:43 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ t_link		*connected_r(t_room *r1, t_room *r2, t_link *links)
 {
 	while (links)
 	{
-		if (!ft_strcmp(r1->name, links->ra) && !ft_strcmp(r2->name, links->ra))
+		if (r1 == links->ra && r2 == links->ra)
 			if (links->val != 0)
 				return (links);
-		if (!ft_strcmp(r1->name, links->rb) && !ft_strcmp(r2->name, links->rb))
+		if (r1 == links->rb && r2 == links->rb)
 			if (links->val != 0)
 				return (links);
-		if (!ft_strcmp(r1->name, links->rb) && !ft_strcmp(r2->name, links->ra))
+		if (r1 == links->rb && r2 == links->ra)
 			if (links->val != 0)
 				return (links);
-		if (!ft_strcmp(r1->name, links->ra) && !ft_strcmp(r2->name, links->rb))
+		if (r1 == links->ra && r2 == links->rb)
 			if (links->val != 0)
 				return (links);
 		links = links->next;
@@ -63,8 +63,8 @@ int			find_small(t_room *rooms, t_link *links)
 		rooms = rooms->next;
 	while (links)
 	{
-		if (!ft_strcmp(links->ra, rooms->name)
-		|| !ft_strcmp(links->rb, rooms->name))
+		if (!ft_strcmp(links->ra->name, rooms->name)
+		|| !ft_strcmp(links->rb->name, rooms->name))
 			if ((links->val != 0 && links->val < v) || v == 0)
 				v = links->val;
 		links = links->next;

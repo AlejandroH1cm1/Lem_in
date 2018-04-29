@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 23:02:51 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 09:02:28 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 10:17:32 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ static int	validate(t_room *rooms, t_link *links)
 			start++;
 		if (rooms->val == -2)
 			end++;
+		if (find_room(rooms->next, rooms->name))
+			return (-7);
 		rooms = rooms->next;
 	}
 	if (start != 1 || end != 1)

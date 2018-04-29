@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 11:50:00 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/28 01:39:15 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 10:05:13 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	add_to_rooms(t_room **rooms, char *line, char **cm, int val)
 	ft_strdel(&name);
 }
 
-void	add_to_links(t_link **links, char *line)
+void	add_to_links(t_link **links, char *line, t_room *rooms)
 {
 	char	*ra;
 	char	*rb;
@@ -95,14 +95,14 @@ void	add_to_links(t_link **links, char *line)
 		j++;
 	rb = ft_strnew(j);
 	ft_strncpy(rb, &line[i], j);
-	add_l(links, ra, rb);
+	add_l(links, find_room(rooms, ra), find_room(rooms, rb));
 	ft_strdel(&ra);
 	ft_strdel(&rb);
 }
 
-int		room_exists(t_room *rooms, char *name)
+int		room_exists(t_room *rooms, t_room *room)
 {
-	while (ft_strcmp(rooms->name, name))
+	while (rooms != room)
 	{
 		if (!(rooms->next))
 			return (0);

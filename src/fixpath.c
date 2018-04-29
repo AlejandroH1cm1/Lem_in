@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 19:16:18 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/28 01:01:47 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 10:07:36 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,14 @@ static void	apply_p_l(t_link *link)
 		link->val = 0;
 }
 
-static void	apply_p_r(t_link *l1, t_link *l2, t_room *rooms)
+static void	apply_p_r(t_link *l1, t_link *l2)
 {
-	t_room	*r;
-
-	if (!ft_strcmp(l1->ra, l2->ra) || !ft_strcmp(l1->ra, l2->rb))
-	{
-		r = find_room(rooms, l1->rb);
-		if (!r->nr)
-			r->nr = ft_strdup(l1->ra);
-	}
-	if (!ft_strcmp(l1->rb, l2->ra) || !ft_strcmp(l1->rb, l2->rb))
-	{
-		r = find_room(rooms, l1->ra);
-		if (!r->nr)
-			r->nr = ft_strdup(l1->rb);
-	}
+	if (l1->ra == l2->ra || l1->ra == l2->rb)
+		if (!l1->rb->nr)
+			l1->rb->nr = ft_strdup(l1->ra->name);
+	if (l1->rb == l2->ra || l1->rb == l2->rb)
+		if (!l1->ra->nr)
+			l1->ra->nr = ft_strdup(l1->rb->name);
 }
 
 void		apply_path(t_room *rooms, t_link *links)
@@ -69,7 +61,7 @@ void		apply_path(t_room *rooms, t_link *links)
 		tr = tr->next;
 	while (tl)
 	{
-		if (!ft_strcmp(tr->name, tl->ra) || !ft_strcmp(tr->name, tl->rb))
+		if (tr == tl->ra || tr == tl->rb)
 			apply_p_l(tl);
 		tl = tl->next;
 	}
@@ -77,7 +69,7 @@ void		apply_path(t_room *rooms, t_link *links)
 	while (tl)
 	{
 		if (tl->val != 0)
-			apply_p_r(tl, tl->next_p, rooms);
+			apply_p_r(tl, tl->next_p);
 		tl = tl->next;
 	}
 }

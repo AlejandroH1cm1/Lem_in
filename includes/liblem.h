@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 16:45:26 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 08:50:18 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 10:15:30 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct		s_room
 
 typedef struct		s_link
 {
-	char			*ra;
-	char			*rb;
+	t_room			*ra;
+	t_room			*rb;
 	int				val;
 	int				ant;
 	struct s_link	*next;
@@ -50,17 +50,17 @@ void				add_r(t_room **room, char *name, int x, int y);
 void				rmv_r(t_room **room, char *name);
 void				dst_r(t_room **room);
 t_room				*find_ant(t_room *rooms, int ant);
-void				add_l(t_link **link, char *ra, char *rb);
-void				rmv_l(t_link **link, char *ra, char *rb);
+void				add_l(t_link **link, t_room *ra, t_room *rb);
+void				rmv_l(t_link **link, t_room *ra, t_room *rb);
 void				dst_l(t_link **link);
 t_link				*has_prev(t_link *link, t_link *links);
-void				add_to_links(t_link **links, char *line);
+void				add_to_links(t_link **links, char *line, t_room *rooms);
 void				add_to_rooms(t_room **room, char *line, char **cm, int val);
 void				mod_val(t_room *rooms, char *name, int val);
 int					get_ants(t_comm **comms);
 void				solve(int ants, t_room *rooms, t_link *links, t_comm *comm);
 int					pathing(t_room *rooms, t_link *links);
-int					room_exists(t_room *rooms, char *name);
+int					room_exists(t_room *rooms, t_room *room);
 t_room				*find_room(t_room *room, char *name);
 void				print_farm(int ants, t_room *rooms, t_link *links,
 						t_comm *comms);

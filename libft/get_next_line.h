@@ -6,13 +6,13 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 20:12:26 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/09 18:53:18 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 10:15:51 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 1
+# define BUFF_SIZE 2048
 # include <stdio.h>
 # include <sys/types.h>
 # include <sys/uio.h>
