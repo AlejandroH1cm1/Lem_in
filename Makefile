@@ -26,3 +26,10 @@ fclean:
 	@make -C libft/ fclean
 
 re:	fclean all
+
+retest:
+	@echo "\033[0;34mRemaking for test\033[0m"
+	@rm lem-in
+	@gcc -c $(FLAGS) $(FILES_C) src/kane_alloc_wrap.c -I ./includes
+	@gcc -o $(NAME) $(FLAGS) $(FILES_O) -I ./includes -L . -lft
+	@cp lem-in resources/tests/maps
