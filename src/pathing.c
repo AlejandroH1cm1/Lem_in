@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 00:22:28 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 10:03:05 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:34:26 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	verify_c(t_link *links)
 	count = 0;
 	while (links)
 	{
-		if (links->ra->val == -1)
+		if (links->ra->val == -1 && links->val != 0)
 			count++;
-		if (links->rb->val == -1)
+		if (links->rb->val == -1 && links->val != 0)
 			count++;
 		links = links->next;
 	}
@@ -34,12 +34,15 @@ static int	connected(t_link *l1, t_link *l2)
 {
 	if (l1 == l2)
 		return (0);
-	if (l1->ra->val != -1)
-		if (l2->rb == l1->ra || l2->ra == l1->ra)
-			return (1);
-	if (l1->rb->val != -1)
-		if (l2->rb == l1->rb || l2->ra == l1->rb)
-			return (1);
+	if ((l1->ra->val == -2 && (l2->ra->val == -2 || l2->rb->val == -2))
+	|| (l1->rb->val == -2 && (l2->ra->val == -2 || l2->rb->val == -2))
+	|| (l1->ra->val == -1 && (l2->ra->val == -1 || l2->rb->val == -1))
+	|| (l1->rb->val == -1 && (l2->ra->val == -1 || l2->rb->val == -1)))
+		return (0);
+	if (l2->rb == l1->ra || l2->ra == l1->ra)
+		return (1);
+	if (l2->rb == l1->rb || l2->ra == l1->rb)
+		return (1);
 	return (0);
 }
 
@@ -69,50 +72,46 @@ static int	f_values(t_link *links)
 	return (1);
 }
 
-static void	calc_val(t_link *links, t_link *link)
+static int	next_row(t_link *links, int row)
 {
 	t_link	*tmp;
+	t_link	*tmp2;
+	int		count;
 
+	count = 0;
 	tmp = links;
 	while (tmp)
 	{
-		if (connected(link, tmp) && tmp->val != -1 && link != tmp)
+		tmp2 = links;
+		while (tmp2)
 		{
-			if (tmp->val == 0)
+			if (connected(tmp, tmp2) && tmp->val == 0 && tmp2->val == row - 1)
 			{
-				link->val = -1;
-				calc_val(links, tmp);
+				tmp->next_p = tmp2;
+				tmp->val = row;
+				count++;
+				break ;
 			}
-			if ((tmp->val + 1 < link->val || link->val < 1) && tmp->val > 0)
-			{
-				link->next_p = tmp;
-				link->val = tmp->val + 1;
-			}
+			tmp2 = tmp2->next;
 		}
 		tmp = tmp->next;
 	}
-	if (link->val > 0)
-		return ;
-	link->val = 0;
+	return (count);
 }
 
 int			pathing(t_room *rooms, t_link *links)
 {
-	t_link	*tmp;
+	int		i;
 
-	tmp = links;
+	i = 2;
 	if (!f_values(links))
 		return (0);
-	while (tmp)
-	{
-		if (tmp->val < 1)
-			calc_val(links, tmp);
-		tmp = tmp->next;
-	}
-	calc_val(links, links);
-	fix_path(links);
+	while (next_row(links, i) != 0)
+		i++;
+	if (!alternate(links, rooms))
+		fix_path(links);
 	apply_path(rooms, links);
 	if (!verify_c(links))
-		return (0);
+		return (1);
 	return (1);
 }

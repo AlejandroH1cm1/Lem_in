@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 01:53:19 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/28 01:53:20 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/30 00:33:43 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void		dst_c(t_comm **comm)
 	ft_strdel(&((*comm)->co));
 	ft_strdel(&((*comm)->room));
 	free(*comm);
+	free((*comm)->room);
 	*comm = NULL;
 }

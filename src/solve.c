@@ -6,13 +6,13 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 23:02:51 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 10:17:32 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:39:56 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "liblem.h"
 
-static void	send_try(int ants, t_room *rooms, t_link *links, int *sent)
+static int	send_try(int ants, t_room *rooms, t_link *links, int *sent)
 {
 	t_room	*aux;
 	t_room	*tmp;
@@ -27,18 +27,18 @@ static void	send_try(int ants, t_room *rooms, t_link *links, int *sent)
 		aux = NULL;
 		while (tmp)
 		{
-			if (connected_r(s, tmp, links) && tmp->val == 0)
+			if (connected_r(s, tmp, links) && (tmp->val == 0 || tmp->val == -2))
 				if (choose_r(get_v(s, tmp, links), get_v(s, aux, links), v,
 						ants - *sent))
 					aux = tmp;
 			tmp = tmp->next;
 		}
-		if (!aux)
-			return ;
+		CHECK(!aux, 0);
 		*sent = *sent + 1;
-		aux->val = *sent;
-		print_move(*sent, aux);
+		(aux->val != -2) ? aux->val = *sent : 1;
+		print_move(*sent, aux, aux->val);
 	}
+	return (aux->val);
 }
 
 static void	send_ants(int ants, t_room *rooms, t_link *links, int recv)
@@ -62,10 +62,10 @@ static void	send_ants(int ants, t_room *rooms, t_link *links, int recv)
 				tmp->val = current;
 			else
 				recv++;
-			print_move(current, tmp);
+			print_move(current, tmp, 0);
 		}
-		if (sent < ants)
-			send_try(ants, rooms, links, &sent);
+		if (sent < ants && send_try(ants, rooms, links, &sent) == -2)
+			recv = ants;
 		ft_putchar('\n');
 	}
 }

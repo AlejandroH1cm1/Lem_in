@@ -6,13 +6,13 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 15:00:40 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 09:44:16 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:43:14 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "liblem.h"
 
-static void	print_link(t_link *link)
+void		print_link(t_link *link)
 {
 	ft_putstr(link->ra->name);
 	ft_putchar('-');
@@ -72,7 +72,7 @@ void		print_farm(int ants, t_room *rooms, t_link *links, t_comm *comms)
 	ft_putendl("");
 }
 
-void		print_move(int ant, t_room *room)
+void		print_move(int ant, t_room *room, int i)
 {
 	char *tmp;
 
@@ -83,4 +83,6 @@ void		print_move(int ant, t_room *room)
 	ft_putstr(room->name);
 	ft_putchar(' ');
 	ft_strdel(&tmp);
+	if (i == -2)
+		ft_putchar('\n');
 }

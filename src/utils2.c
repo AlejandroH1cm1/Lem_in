@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 22:54:29 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 10:10:43 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/30 05:24:08 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,11 @@ int			choose_r(int v1, int v2, int v, int a)
 		return (1);
 	if (v2 == -1)
 		return (0);
+	if (v1 == 1)
+		return (1);
+	if (v2 == 1)
+		return (0);
 	if (v1 <= v2)
 		return (1);
-	else
-		return (0);
+	return (0);
 }

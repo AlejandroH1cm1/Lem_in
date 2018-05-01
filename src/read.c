@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 13:02:05 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 09:44:40 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/29 23:20:13 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static int	format_link(char *line)
 	int j;
 
 	i = 0;
-	while (ft_isalpha(line[i]) || ft_isdigit(line[i]))
+	while (line[i] != '-' && line[i])
 		i++;
 	if (line[i] != '-' || i == 0)
 		return (0);
 	i++;
 	j = i;
-	while (ft_isalpha(line[i]) || ft_isdigit(line[i]))
+	while (line[i])
 		i++;
 	if (line[i] == j || line[i] != '\0')
 		return (0);

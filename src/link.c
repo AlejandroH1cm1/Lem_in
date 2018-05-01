@@ -6,41 +6,51 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 08:56:25 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 09:40:17 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:33:37 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "liblem.h"
 
-void		add_l(t_link **link, t_room *ra, t_room *rb)
+static t_link	*new(t_room *ra, t_room *rb)
+{
+	t_link *link;
+
+	link = (t_link *)malloc(sizeof(t_link));
+	link->ra = ra;
+	link->rb = rb;
+	link->val = 0;
+	link->ant = 0;
+	link->next = NULL;
+	link->next_p = NULL;
+	return (link);
+}
+
+void			add_l(t_link **link, t_room *ra, t_room *rb)
 {
 	t_link *tmp;
 
+	tmp = *link;
+	while (tmp)
+	{
+		if (tmp->ra == ra && tmp->rb == rb)
+			return ;
+		if (tmp->ra == rb && tmp->rb == ra)
+			return ;
+		tmp = tmp->next;
+	}
 	if (!*link)
 	{
-		*link = (t_link *)malloc(sizeof(t_link));
-		(*link)->ra = ra;
-		(*link)->rb = rb;
-		(*link)->val = 0;
-		(*link)->ant = 0;
-		(*link)->next = NULL;
-		(*link)->next_p = NULL;
+		*link = new(ra, rb);
 		return ;
 	}
 	tmp = *link;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->next = (t_link *)malloc(sizeof(t_link));
-	tmp = tmp->next;
-	tmp->ra = ra;
-	tmp->rb = rb;
-	tmp->val = 0;
-	tmp->ant = 0;
-	tmp->next = NULL;
-	tmp->next_p = NULL;
+	tmp->next = new(ra, rb);
 }
 
-void		rmv_l(t_link **link, t_room *ra, t_room *rb)
+void			rmv_l(t_link **link, t_room *ra, t_room *rb)
 {
 	t_link	*tmp;
 	t_link	*tmp2;
@@ -59,7 +69,7 @@ void		rmv_l(t_link **link, t_room *ra, t_room *rb)
 	tmp = NULL;
 }
 
-void		dst_l(t_link **link)
+void			dst_l(t_link **link)
 {
 	if (!*link)
 		return ;
@@ -69,7 +79,7 @@ void		dst_l(t_link **link)
 	*link = NULL;
 }
 
-t_link		*has_prev(t_link *link, t_link *links)
+t_link			*has_prev(t_link *link, t_link *links)
 {
 	while (links)
 	{

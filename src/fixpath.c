@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 19:16:18 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 10:07:36 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/30 03:29:16 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ static int	d_b(t_link *link, t_link *links)
 	int		(d);
 
 	d = 0;
+	if (!has_prev(link, links) && link->ra->val != -1 && link->rb->val != -1)
+		return (1000000);
 	tmp = has_prev(link, links);
 	while (tmp)
 	{
 		d++;
+		if (!has_prev(tmp, links) && tmp->ra->val != -1 && tmp->rb->val != -1)
+			return (1000000);
 		tmp = has_prev(tmp, links);
 	}
 	return (d);

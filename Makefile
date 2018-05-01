@@ -1,5 +1,5 @@
-FILES_C = src/main.c src/error.c src/link.c src/room.c src/utils.c src/utils2.c src/read.c src/solve.c src/pathing.c src/print.c src/fixpath.c src/utils3.c src/commentaries.c
-FILES_O = main.o error.o link.o room.o utils.o read.o solve.o pathing.o utils2.o print.o fixpath.o utils3.o commentaries.o
+FILES_C = src/main.c src/error.c src/link.c src/room.c src/utils.c src/utils2.c src/read.c src/solve.c src/pathing.c src/print.c src/fixpath.c src/utils3.c src/commentaries.c src/alternate.c
+FILES_O = main.o error.o link.o room.o utils.o read.o solve.o pathing.o utils2.o print.o fixpath.o utils3.o commentaries.o alternate.o
 NAME = lem-in
 FLAGS = -Wall -Wextra -Werror
 
@@ -32,4 +32,4 @@ retest:
 	@rm lem-in
 	@gcc -c $(FLAGS) $(FILES_C) src/kane_alloc_wrap.c -I ./includes
 	@gcc -o $(NAME) $(FLAGS) $(FILES_O) -I ./includes -L . -lft
-	@cp lem-in resources/tests/maps
+	@cp lem-in maps/

@@ -6,13 +6,14 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 16:45:26 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 10:15:30 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:46:18 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBLEM_H
 # define LIBLEM_H
 # include "libft.h"
+# define CHECK(x, y) if(x)return(y) 
 
 typedef struct		s_comm
 {
@@ -71,8 +72,10 @@ void				apply_path(t_room *rooms, t_link *links);
 t_room				*find_start(t_room *rooms);
 int					find_small(t_room *rooms, t_link *links);
 int					choose_r(int v1, int v2, int v, int a);
-void				print_move(int ant, t_room *room);
+void				print_move(int ant, t_room *room, int i);
 int					find_nx_ant(t_room *rooms, int ant);
 t_room				*nx_ant(t_room *rmps, int *current);
+void				print_link(t_link *link);
+int					alternate(t_link *links, t_room *rooms);
 
 #endif
