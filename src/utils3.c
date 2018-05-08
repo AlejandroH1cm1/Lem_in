@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 00:33:45 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/30 18:30:00 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/05/07 21:24:55 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ t_room	*nx_ant(t_room *rooms, int *current)
 	t_room	*tmp;
 
 	tmp = find_ant(rooms, find_nx_ant(rooms, *current));
+	if (!tmp || *current == tmp->val)
+	{
+		*current = 0;
+		return (NULL);
+	}
 	*current = tmp->val;
 	return (tmp);
 }

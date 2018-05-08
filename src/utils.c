@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 11:50:00 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/30 18:43:02 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/05/07 20:31:46 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		get_ants(t_comm **comms)
 		return (-1);
 	while (!ft_strncmp(line, "#", 1))
 	{
-		add_to_comm(line, comms, NULL);
+		add_to_comm(line, comms);
 		ft_strdel(&line);
 		get_next_line(0, &line);
 	}

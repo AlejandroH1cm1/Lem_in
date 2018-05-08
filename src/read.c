@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 13:02:05 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 23:20:13 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/05/07 20:26:10 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,7 @@ int			read_in(t_room **rooms, t_link **links, t_comm **comms)
 			ft_strdel(&cm);
 		if (f == 3)
 			cm = ft_strdup(line);
-		if (f == 4)
-			add_to_comm(line, comms, *rooms);
+		add_to_comm(line, comms);
 		ft_strdel(&line);
 	}
 	return (0);

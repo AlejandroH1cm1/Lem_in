@@ -6,14 +6,13 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 15:14:24 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/21 17:18:12 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/05/06 16:17:51 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <wchar.h>

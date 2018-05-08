@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 03:56:31 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/30 18:46:12 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/05/07 20:54:02 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,15 @@ static int		crossings(t_link *links, t_room *start, int *size, int *outs)
 
 static	t_link	*get_rm(t_link *link, t_link *aux, int size)
 {
-	print_link(link);
 	if (aux == link)
 		return (aux);
 	if (link->val > size)
 	{
-		ft_putendl("unu");
-		print_link(link);
 		link->val = 0;
 		return (NULL);
 	}
 	if (!aux && link->val <= size)
-	{
-		ft_putchar('>');
-		print_link(link);
 		return (link);
-	}
 	if (aux && link->val == size)
 	{
 		link->val = 0;
@@ -80,7 +73,6 @@ int				alternate(t_link *links, t_room *rooms)
 	if (cross > size / outs)
 	{
 		size = find_small(rooms, links);
-		ft_putendl(ft_itoa(size));
 		while (links)
 		{
 			if (links->ra == start || links->rb == start)

@@ -6,19 +6,18 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 16:45:26 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/30 18:46:18 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/05/07 21:24:57 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBLEM_H
 # define LIBLEM_H
 # include "libft.h"
-# define CHECK(x, y) if(x)return(y) 
+# define CHECK(x, y) if(x)return(y)
 
 typedef struct		s_comm
 {
 	char			*co;
-	char			*room;
 	struct s_comm	*next;
 }					t_comm;
 
@@ -44,8 +43,7 @@ typedef struct		s_link
 
 void				error(int er_no);
 int					read_in(t_room **rooms, t_link **links, t_comm **comms);
-void				add_to_comm(char *line, t_comm **commentaries,
-						t_room *rooms);
+void				add_to_comm(char *line, t_comm **commentaries);
 void				dst_c(t_comm **comm);
 void				add_r(t_room **room, char *name, int x, int y);
 void				rmv_r(t_room **room, char *name);
@@ -63,8 +61,7 @@ void				solve(int ants, t_room *rooms, t_link *links, t_comm *comm);
 int					pathing(t_room *rooms, t_link *links);
 int					room_exists(t_room *rooms, t_room *room);
 t_room				*find_room(t_room *room, char *name);
-void				print_farm(int ants, t_room *rooms, t_link *links,
-						t_comm *comms);
+void				print_farm(int ants, t_comm *comms);
 int					get_v(t_room *r1, t_room *r2, t_link *links);
 t_link				*connected_r(t_room *r1, t_room *r2, t_link *links);
 void				fix_path(t_link *links);
@@ -75,7 +72,6 @@ int					choose_r(int v1, int v2, int v, int a);
 void				print_move(int ant, t_room *room, int i);
 int					find_nx_ant(t_room *rooms, int ant);
 t_room				*nx_ant(t_room *rmps, int *current);
-void				print_link(t_link *link);
 int					alternate(t_link *links, t_room *rooms);
 
 #endif
