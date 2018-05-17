@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 11:50:00 by aherrera          #+#    #+#             */
-/*   Updated: 2018/05/07 20:31:46 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/05/17 16:38:33 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int		get_ants(t_comm **comms)
 		get_next_line(0, &line);
 	}
 	if (!ft_isdigitstr(line))
+	{
 		ft_strdel(&line);
-	if (!ft_isdigitstr(line))
 		return (-2);
+	}
 	ants = ft_atoi(line);
 	ft_strdel(&line);
 	if (ants == 0)

@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 23:02:51 by aherrera          #+#    #+#             */
-/*   Updated: 2018/05/07 21:24:51 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/05/17 16:32:29 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	send_try(int ants, t_room *rooms, t_link *links, int *sent)
 		}
 		CHECK(!aux, 0);
 		*sent = *sent + 1;
-		aux->val = (aux->val != -2 ? *sent : 1);
+		aux->val = (aux->val != -2 ? *sent : aux->val);
 		print_move(*sent, aux, aux->val);
 	}
 	return (aux->val);
