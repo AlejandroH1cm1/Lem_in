@@ -14,7 +14,7 @@ $(NAME):
 	@gcc -o $(NAME) $(FLAGS) $(FILES_O) -I ./includes -L . -lft
 	@echo "\033[0;32mFinished building \033[40;97m$(NAME)\033[0m"
 	@make -C Bonus/ all
-	@cp lem-in visualizer map/
+	@cp lem-in visualizer maps/
 
 clean:
 	@/bin/rm -f $(FILES_O)
