@@ -24,6 +24,7 @@ clean:
 fclean:
 	@/bin/rm -f $(FILES_O)
 	@/bin/rm -f $(NAME) visualizer
+	@/bin/rm -f maps/$(NAME) maps/visualizer
 	@/bin/rm -f libft.a
 	@make -C libft/ fclean
 	@make -C Bonus/ fclean
