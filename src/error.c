@@ -6,7 +6,7 @@
 /*   By: aherrera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:06:04 by aherrera          #+#    #+#             */
-/*   Updated: 2018/04/29 10:19:41 by aherrera         ###   ########.fr       */
+/*   Updated: 2018/05/22 18:45:21 by aherrera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	error(int er_no)
 
 	while (get_next_line(0, &line))
 		ft_strdel(&line);
-	ft_putendl("");
+	ft_putendl("ERROR");
 	ft_putendl("***");
 	if (er_no == -1)
 		ft_putendl("No input");

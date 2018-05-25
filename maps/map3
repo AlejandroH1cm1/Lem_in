@@ -1,25 +1,20 @@
-50
+20
 ##start
-bla 23 3
-bli 16 7
-blo 16 3
-blu 16 5
-bloblo 9 3
-blublu 1 5
-blabla 4 8
+1 5 5
+2 3 3
 ##end
-blibli 9 5
-blibli-blu
-blibli-blublu
-bla-blo
-blu-blo
-bloblo-bli
-blo-bloblo
-blu-bli
-bli-bla
-blabla-blublu
-blabla-bli
-blabla-blu
-blublu-bloblo
-bla-blo
-blu-blo
+3 5 1
+4 5 4
+5 7 2
+6 9 5
+7 10 4
+8 11 2
+1-2
+1-4
+4-5
+1-6
+6-7
+7-8
+2-3
+5-3
+8-3

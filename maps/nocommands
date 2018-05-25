@@ -1,0 +1,6 @@
+15
+room1 0 0
+room2 1 4
+room3 5 6
+room1-room2
+room2-room3

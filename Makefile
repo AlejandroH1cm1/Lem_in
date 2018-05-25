@@ -8,28 +8,36 @@ all: $(NAME)
 $(NAME):
 	@make -C libft/ all
 	@cp libft/libft.a ./
+	@cp libft.a Bonus/
 	@echo "\033[0;5;33mCompiling and building\033[0m"
-	@gcc -c $(FLAGS) $(FILES_C) src/kane_alloc_wrap.c -I ./includes
+	@gcc -c $(FLAGS) $(FILES_C) -I ./includes
 	@gcc -o $(NAME) $(FLAGS) $(FILES_O) -I ./includes -L . -lft
-	@gcc -o $(NAME)2 $(FLAGS) $(FILES_O) kane_alloc_wrap.o -I ./includes -L . -lft
 	@echo "\033[0;32mFinished building \033[40;97m$(NAME)\033[0m"
+	@make -C Bonus/ all
+	@cp lem-in visualizer map/
 
 clean:
-	@/bin/rm -f $(FILES_O) kane_alloc_wrap.o
+	@/bin/rm -f $(FILES_O)
 	@make -C libft/ clean
+	@make -C Bonus/ clean
 
 fclean:
-	@/bin/rm -f $(FILES_O) kane_alloc_wrap.o
-	@/bin/rm -f $(NAME)
-	@/bin/rm -f $(NAME)2
+	@/bin/rm -f $(FILES_O)
+	@/bin/rm -f $(NAME) visualizer
 	@/bin/rm -f libft.a
 	@make -C libft/ fclean
+	@make -C Bonus/ fclean
 
 re:	fclean all
 
 retest:
+	@make -C Bonus/ retest
 	@echo "\033[0;34mRemaking for test\033[0m"
 	@rm lem-in
-	@gcc -c $(FLAGS) $(FILES_C) src/kane_alloc_wrap.c -I ./includes
+	@gcc -c $(FLAGS) $(FILES_C) -I ./includes
 	@gcc -o $(NAME) $(FLAGS) $(FILES_O) -I ./includes -L . -lft
 	@cp lem-in maps/
+
+bonus:
+	@make -C Bonus/ re
+	@cp lem-in visualizer map/
