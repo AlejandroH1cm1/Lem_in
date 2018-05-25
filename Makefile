@@ -41,4 +41,4 @@ retest:
 
 bonus:
 	@make -C Bonus/ re
-	@cp lem-in visualizer map/
+	@cp lem-in visualizer maps/
